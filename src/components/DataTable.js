@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -14,7 +14,6 @@ const createData = (name, category, progress, description) => ({
 });
 const rows = [
   createData("flexbox", "learning", 0, "play around and find a cheat sheet"),
-
   createData("SQL commands", "learning", 0, "table creation and change commands"),
   createData("passport", "chores", 1, "get forms take photo sent out mail"),
   createData("quarter rounds", "condo", 2, "finished the last wall"),
@@ -34,7 +33,39 @@ const useStyles = makeStyles({
 });
 
 const DataTable = () => {
+  const [filter, setFilter] = useState(4);
+  const [sortItem, setSortItem] = useState("progress");
   const classes = useStyles();
+  const sortTable = arr => {
+    switch (sortItem) {
+      case "progress":
+        return arr.sort(function(a, b) {
+          return a.progress - b.progress;
+        });
+      default:
+        return arr.sort(function(a, b) {
+          const aCategory = a.category.toUpperCase();
+          const bCategory = b.category.toUpperCase();
+          if (aCategory < bCategory) return -1;
+          if (aCategory > bCategory) return 1;
+          return 0;
+        });
+    }
+  };
+  const filterTasks = arr => {
+    switch (filter) {
+      case 0:
+        return arr.filter(task => task.progress === 0);
+      case 1:
+        return arr.filter(task => task.progress === 1);
+      case 2:
+        return arr.filter(task => task.progress === 2);
+      case 3:
+        return arr.filter(task => task.progress !== 2);
+      default:
+        return arr;
+    }
+  };
   return (
     <Table className={classes.table} aria-label="simple table">
       <TableHead>
@@ -46,7 +77,7 @@ const DataTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows.map(row => (
+        {sortTable(filterTasks(rows)).map(row => (
           <TableRow key={row.name} style={{ background: progressColors[row.progress] }}>
             <TableCell component="th" scope="row">
               {row.name}
