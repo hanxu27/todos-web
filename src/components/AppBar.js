@@ -19,8 +19,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const NavBar = () => {
+const filterHash = { 0: "Queued", 1: "In Progress", 2: "Completed", 3: "Incomplete", 4: "All" };
+const sortArray = [];
+
+const NavBar = props => {
   const classes = useStyles();
+  console.log(props);
   return (
     <AppBar position="static">
       <Toolbar>
@@ -29,6 +33,12 @@ const NavBar = () => {
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           Todos
+        </Typography>
+        <Typography variant="h6" className={classes.title}>
+          {"Show Items: " + filterHash[props.filter]}
+        </Typography>
+        <Typography variant="h6" className={classes.title}>
+          {"Sort by: " + props.sortTerm}
         </Typography>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="sort">
           <ListIcon />

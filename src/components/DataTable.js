@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -32,12 +32,10 @@ const useStyles = makeStyles({
   }
 });
 
-const DataTable = () => {
-  const [filter, setFilter] = useState(4);
-  const [sortItem, setSortItem] = useState("progress");
+const DataTable = props => {
   const classes = useStyles();
   const sortTable = arr => {
-    switch (sortItem) {
+    switch (props.sortItem) {
       case "progress":
         return arr.sort(function(a, b) {
           return a.progress - b.progress;
@@ -53,7 +51,7 @@ const DataTable = () => {
     }
   };
   const filterTasks = arr => {
-    switch (filter) {
+    switch (props.filter) {
       case 0:
         return arr.filter(task => task.progress === 0);
       case 1:
