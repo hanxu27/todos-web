@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import ListIcon from "@material-ui/icons/List";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,10 +36,16 @@ const NavBar = props => {
           Todos
         </Typography>
         <Typography variant="h6" className={classes.title}>
-          {"Show Items: " + filterHash[props.filter]}
+          {"Show Items: "}
+          <Button variant="contained" color="secondary" className={classes.button}>
+            {filterHash[props.filter]}
+          </Button>
         </Typography>
         <Typography variant="h6" className={classes.title}>
-          {"Sort by: " + props.sortTerm}
+          {"Sort by: "}
+          <Button variant="contained" color="secondary" className={classes.button}>
+            {props.sortTerm}
+          </Button>
         </Typography>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="sort">
           <ListIcon />
