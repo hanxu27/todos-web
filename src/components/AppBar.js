@@ -37,7 +37,12 @@ const NavBar = props => {
         </Typography>
         <Typography variant="h6" className={classes.title}>
           {"Show Items: "}
-          <Button variant="contained" color="secondary" className={classes.button}>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={() => props.handleFilter(props.filter)}
+          >
             {filterHash[props.filter]}
           </Button>
         </Typography>
