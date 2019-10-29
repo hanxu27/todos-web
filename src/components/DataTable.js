@@ -21,6 +21,7 @@ const rows = [
 ];
 
 const progressColors = ["#606060", "#89EE16", "#166CEE"];
+const progressName = ["Queued", "In Progress", "Completed"];
 
 const useStyles = makeStyles({
   root: {
@@ -81,7 +82,7 @@ const DataTable = props => {
               {row.name}
             </TableCell>
             <TableCell align="left">{row.category}</TableCell>
-            <TableCell align="left">{row.progress}</TableCell>
+            <TableCell align="left">{progressName[row.progress]}</TableCell>
             <TableCell align="left">{row.description}</TableCell>
           </TableRow>
         ))}
