@@ -25,7 +25,6 @@ const sortArray = [];
 
 const NavBar = props => {
   const classes = useStyles();
-  console.log(props);
   return (
     <AppBar position="static">
       <Toolbar>
