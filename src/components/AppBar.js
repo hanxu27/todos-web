@@ -20,8 +20,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const filterHash = { 0: "Queued", 1: "In Progress", 2: "Completed", 3: "Incomplete", 4: "All" };
-const sortArray = [];
+const filterTerms = ["Queued", "In Progress", "Completed", "Incomplete", "All"];
+const sortTerms = ["progress", "category"];
 
 const NavBar = props => {
   const classes = useStyles();
@@ -40,15 +40,20 @@ const NavBar = props => {
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={() => props.handleFilter(props.filter)}
+            onClick={() => props.handleFilter(props.filter, filterTerms)}
           >
-            {filterHash[props.filter]}
+            {filterTerms[props.filter]}
           </Button>
         </Typography>
         <Typography variant="h6" className={classes.title}>
           {"Sort by: "}
-          <Button variant="contained" color="secondary" className={classes.button}>
-            {props.sortTerm}
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={() => props.handleSort(props.sort, sortTerms)}
+          >
+            {sortTerms[props.sort]}
           </Button>
         </Typography>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="sort">

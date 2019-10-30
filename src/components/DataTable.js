@@ -36,8 +36,8 @@ const useStyles = makeStyles({
 const DataTable = props => {
   const classes = useStyles();
   const sortTable = arr => {
-    switch (props.sortTerm) {
-      case "progress":
+    switch (props.sort) {
+      case 0:
         return arr.sort(function(a, b) {
           return a.progress - b.progress;
         });
