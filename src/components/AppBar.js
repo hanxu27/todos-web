@@ -28,8 +28,14 @@ const NavBar = props => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="add">
-          <AddIcon onClick={props.handleModalOpen} />
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="add"
+          onClick={props.handleModalOpen}
+        >
+          <AddIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           Todos
