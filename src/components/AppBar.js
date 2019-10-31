@@ -29,7 +29,7 @@ const NavBar = props => {
     <AppBar position="static">
       <Toolbar>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="add">
-          <AddIcon />
+          <AddIcon onClick={props.handleModalOpen} />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           Todos
@@ -56,9 +56,6 @@ const NavBar = props => {
             {sortTerms[props.sort]}
           </Button>
         </Typography>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="sort">
-          <ListIcon />
-        </IconButton>
       </Toolbar>
     </AppBar>
   );
