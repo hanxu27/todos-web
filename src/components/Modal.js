@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import NewTaskForm from "./NewTaskForm";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -34,10 +35,7 @@ export default function MyModal(props) {
       }}
     >
       <Fade in={props.showModal}>
-        <div className={classes.paper}>
-          <h2 id="transition-modal-title">Add New Task</h2>
-          <p id="transition-modal-description">Task form here</p>
-        </div>
+        <NewTaskForm />
       </Fade>
     </Modal>
   );
